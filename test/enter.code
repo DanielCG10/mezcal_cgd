@@ -1,0 +1,74 @@
+main::[]->[Int]:
+{
+	Numero: Int;
+	
+	[$Numero != 4]@{
+		show: "      Menu     ";
+		show: "1 MENOR Y MAYOR";
+		show: "2 LISTA ORDENADA";
+		show: "3 MEDIA MEDIANA Y MODA";
+		show: "4 SALIR";
+		show: " ";
+		show: "SELECCIONE UNA OPCION";
+		load:Numero;
+		[$Numero = 1]?{
+                	show: "MENOR Y MAYOR";
+                	show: "INGRESE CINCO NUMEROS";
+                	Serie: Int[4];
+                	f:Int;
+                	i: Int;
+                	num: Int;
+			[f:0 \ $f<5 \ f:$f+1]@{
+				show:"Dame un Numero";
+				load:num;
+				Serie:[$f,$num];
+			}
+			min: Int;
+			min: $Serie[0];
+			[i:0 \ $i<5 \ i:$i+1]@{          
+				[$Serie[$i] < $min]?{ //LOGICAL LEVEL
+                			min: $Serie[$i];
+        			}
+			}
+			show: "El numero menor es ", $min , "";
+                	may: Int;
+			may: $Serie[0];
+			[i:0 \ $i<5 \ i:$i+1]@{
+			[$Serie[$i] > $may]?{
+                			may: $Serie[$i];
+        			}
+			}
+			show: "El numro mayor es ", $may , "";
+			
+        	}[$Numero = 2]?+{
+                	show: "Lista Ordenada";
+                	show: "INGRESE DIEZ NUMEROS";
+                	Orden: Int[9];
+                	f:Int;
+                	i: Int;
+                	h: Int;
+                	num: Int;
+			[f:0 \ $f<10 \ f:$f+1]@{
+				show:"Dame un Numero";
+				load:num;
+				Orden:[$f,$num];
+			}[f:0 \ $f<10 \ f:$f+1]@{
+				[f:0 \ $f<10 \ f:$f+1]@{
+				
+				}
+			
+			}
+			
+        	}
+        	[$Numero = 3]?+{
+                	show: "E 3";
+                	
+        	}
+        	[$Numero = 4]?+{
+                	show: "Nos vemos";
+        	}|{
+			show: "Opcion invalida";
+		}	
+	}
+
+}
